@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="Spring-4.2.3.RELEASE">
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-aspects-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-context-support-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-beans-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-aop-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-instrument-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-instrument-tomcat-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-expression-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-jms-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-jdbc-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-context-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-oxm-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-core-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-orm-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-messaging-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/aopalliance-1.0.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-tx-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-test-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/commons-logging-1.1.3.jar" />
+  </library>
+  <library name="Spring MVC-4.2.3.RELEASE">
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-webmvc-portlet-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-websocket-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-webmvc-4.2.3.RELEASE.jar" />
+    <archive path="/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/lib/spring-web-4.2.3.RELEASE.jar" />
+  </library>
+</eclipse-userlibraries>
+
