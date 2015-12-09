@@ -11,4 +11,9 @@ public class LoginController {
     public String get() {
         return "login";
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public String post() {
+        return "index";
+    }
 }
