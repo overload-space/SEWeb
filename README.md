@@ -15,6 +15,7 @@
 ## 数据库配置
 
 + 数据库配置项在web/WEB-INF/SEWeb-servlet.xml中, 你需要修改用户名和密码为你本地mysql的用户名和密码, 并在本地建立SEWeb数据库
++ 连接数据库的简单例子写在了RegisterController里的post方法里, 用于用户注册
 + 要测试注册功能需要在数据库中添加Student表:
 
 ```sql
