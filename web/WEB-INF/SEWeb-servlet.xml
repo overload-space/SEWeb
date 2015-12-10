@@ -7,6 +7,19 @@
 
     <context:component-scan base-package="controller" />
 
+    <!-- Database Config -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/SEWeb"/>
+        <property name="username" value="Cloud"/>
+        <property name="password" value="2333"/>
+    </bean>
+
+    <!-- Definition for studentJDBCTemplate bean -->
+    <bean id="database" class="model.Database">
+        <property name="dataSource"  ref="dataSource" />
+    </bean>
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/jsp/" />
         <property name="suffix" value=".jsp" />
