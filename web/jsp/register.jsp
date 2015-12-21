@@ -20,43 +20,43 @@
     <meta name="author" content="">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="static/img/favicon.ico">
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
 
     <!-- Web Fonts -->
     <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
 
     <!-- CSS Global Compulsory -->
-    <link rel="stylesheet" href="static/plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 
     <!-- CSS Header and Footer -->
-    <link rel="stylesheet" href="static/css/headers/header-default.css">
-    <link rel="stylesheet" href="static/css/footers/footer-v1.css">
+    <link rel="stylesheet" href="/static/css/headers/header-default.css">
+    <link rel="stylesheet" href="/static/css/footers/footer-v1.css">
 
     <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="static/plugins/animate.css">
-    <link rel="stylesheet" href="static/plugins/line-icons/line-icons.css">
-    <link rel="stylesheet" href="static/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/plugins/animate.css">
+    <link rel="stylesheet" href="/static/plugins/line-icons/line-icons.css">
+    <link rel="stylesheet" href="/static/plugins/font-awesome/css/font-awesome.min.css">
 
     <!-- CSS Page Style -->
-    <link rel="stylesheet" href="static/css/pages/page_log_reg_v1.css">
+    <link rel="stylesheet" href="/static/css/pages/page_log_reg_v1.css">
 
     <!-- CSS Customization -->
-    <link rel="stylesheet" href="static/css/custom.css">
+    <link rel="stylesheet" href="/static/css/custom.css">
 </head>
 
 <body>
 
 <div class="wrapper">
     <!--=== Header ===-->
-    <%@include file="header.html"%>
+    <%@include file="header.jsp"%>
     <!--=== End Header ===-->
 
     <!--=== Content Part ===-->
     <div class="container content">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                <form class="reg-page" action="register" method="post">
+                <form class="reg-page" action="/register" method="post">
                     <div class="reg-header">
                         <h2>注册新用户</h2>
                         <p>已经拥有账号？<a href="login" class="color-green">直接登录</a></p>
