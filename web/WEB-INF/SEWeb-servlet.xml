@@ -11,8 +11,8 @@
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost:3306/SEWeb"/>
-        <property name="username" value="Cloud"/>
-        <property name="password" value="2333"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
     </bean>
 
     <!-- Definition for studentJDBCTemplate bean -->

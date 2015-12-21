@@ -20,6 +20,10 @@
       <root url="jar://$PROJECT_DIR$/lib/spring-tx-4.2.3.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spring-test-4.2.3.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.servlet.jsp.jstl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mail.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
