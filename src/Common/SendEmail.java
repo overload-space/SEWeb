@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
 
 public class SendEmail
 {
-    // 参数表示：发送邮箱、目的邮箱、发送邮箱密码、发送邮件正文
+  
     public SendEmail( String _to,String _emailContent) {
         String to = _to;
         String from ="xxx@xxx.com";
