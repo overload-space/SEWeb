@@ -1,17 +1,23 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="header">
     <div class="container">
         <!-- Logo -->
         <a class="logo" href="/">
-            <img src="static/img/logo1-default.png" alt="Logo">
+            <img src="/static/img/logo1-default.png" alt="Logo">
         </a>
         <!-- End Logo -->
 
         <!-- Topbar -->
+        <%String studentID=(String)session.getAttribute("studentID");
+            if(studentID==null) {
+                studentID="登录";
+            }
+        %>
         <div class="topbar">
             <ul class="loginbar pull-right">
                 <li><a href="page_faq.html">帮助</a></li>
                 <li class="topbar-devider"></li>
-                <li><a href="login">登录</a></li>
+                <li><a href="login"><%=studentID%></a></li>
                 <li class="topbar-devider"></li>
                 <li><a href="register">注册</a></li>
             </ul>
