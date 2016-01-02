@@ -1,4 +1,5 @@
-<%--
+<%@ page import="model.Message" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Cloud
   Date: 15/12/7
@@ -60,64 +61,34 @@
             <div class="col-md-9">
                 <div class="headline"><h2>通知</h2></div>
 
-                <!-- Clients Block-->
-                <div class="row clients-page">
+               <%
+                   ArrayList<Message> messages= (ArrayList<Message>) session.getAttribute("messageIndex");
 
-                    <div class="col-md-10">
-                        <h3>Cisco Systems, Inc</h3>
-                        <ul class="list-inline">
-                            <li><i class="fa fa-map-marker color-green"></i> USA</li>
-                            <li><i class="fa fa-globe color-green"></i> <a class="linked" href="#">http://www.example.com</a></li>
-                            <li><i class="fa fa-briefcase color-green"></i> Web Design &amp; Development</li>
-                        </ul>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati</p>
-                        <p>Olerano ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna edetquam lacus. Fusce condimentum eleifend enim a sint occaecati feugiat..</p>
-                    </div>
-                </div>
-                <!-- End Clients Block-->
 
-                <!-- Clients Block-->
-                <div class="row clients-page">
-                    <div class="col-md-10">
-                        <h3>Natural Green</h3>
-                        <ul class="list-inline">
-                            <li><i class="fa fa-map-marker color-green"></i> Canada</li>
-                            <li><i class="fa fa-globe color-green"></i> <a class="linked" href="#">http://www.example.com</a></li>
-                            <li><i class="fa fa-briefcase color-green"></i> Logo Design &amp; Wordpress</li>
-                        </ul>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati. Olerano ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna edetquam lacus. Fusce condimentum eleifend enim a sint occaecati feugiat..</p>
-                    </div>
-                </div>
-                <!-- End Clients Block-->
+                if(messages != null) {
+                for(int i=0;i<3 && i<messages.size();i++) {
+                     Message message=messages.get(i);
 
-                <!-- Clients Block-->
-                <div class="row clients-page">
-                    <div class="col-md-10">
-                        <h3>The Coca-Cola Company</h3>
-                        <ul class="list-inline">
-                            <li><i class="fa fa-map-marker color-green"></i> USA</li>
-                            <li><i class="fa fa-globe color-green"></i> <a class="linked" href="#">http://www.example.com</a></li>
-                            <li><i class="fa fa-briefcase color-green"></i> Web Design &amp; Development</li>
-                        </ul>
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati</p>
-                        <p>Olerano ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna edetquam lacus. Fusce condimentum eleifend enim a sint occaecati feugiat..</p>
-                    </div>
-                </div>
-                <!-- End Clients Block-->
+                    out.print(" <div class=\"row clients-page\">  <div class=\"col-md-10\">");
 
-                <!-- Pagination -->
-                <div class="text-center md-margin-bottom-30">
-                    <ul class="pagination">
-                        <li><a href="#">«</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>
-                </div>
-                <!-- End Pagination -->
+                    out.print("<span><h3>"+message.getSubject()+"</h3></span>");
+
+                    out.print("<ul class=\"list-inline\">");
+                    if(message.isImportant()) {
+                        out.print("<li><i class=\"fa fa-star color-yellow\"></i>重要</li>\n");
+                    }
+                    out.print("</ul>");
+
+                    String[] lines = message.getContent().split("\\r?\\n");
+                    for(String line:lines) {
+                        out.print("<p>"+line+"</p>");
+                    }
+                    out.print(" </div> </div>");
+                 }
+                }
+            %>
+
+
             </div><!--/col-md-9-->
 
             <div class="col-md-3">
