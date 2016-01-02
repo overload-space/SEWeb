@@ -8,14 +8,15 @@
         <!-- End Logo -->
 
         <!-- Topbar -->
-        <%String studentID=(String)session.getAttribute("studentID");
+        <%
+            String studentID=(String)session.getAttribute("studentID");
             if(studentID==null) {
                 studentID="登录";
             }
         %>
         <div class="topbar">
             <ul class="loginbar pull-right">
-                <li><a href="page_faq.html">帮助</a></li>
+                <li><a href="#">帮助</a></li>
                 <li class="topbar-devider"></li>
                 <li><a href="login"><%=studentID%></a></li>
                 <li class="topbar-devider"></li>
@@ -45,7 +46,7 @@
                 <!-- End Home -->
 
                 <!-- Home -->
-                <li><a href="#">作业</a></li>
+                <li><a href="/homework">作业</a></li>
                 <!-- End Home -->
 
                 <!-- Search Block -->

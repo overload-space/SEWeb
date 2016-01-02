@@ -31,7 +31,7 @@ public class LoginController {
             System.out.println("yes!");
             session.setAttribute("failed",0);
             session.setAttribute("studentID",student.getId()+" 退出");
-            return "index";
+            return "redirect:/";
         }
         else {
             session.setAttribute("studentID","登录");
