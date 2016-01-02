@@ -2,8 +2,12 @@ package model;
 
 import org.springframework.core.ExceptionDepthComparator;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 
 import javax.sql.DataSource;
+
 
 public class Database {
     private DataSource dataSource;
@@ -12,6 +16,9 @@ public class Database {
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
         jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+    public DataSource getDataSource() {
+        return dataSource;
     }
 
     public void insert(String sql) {
