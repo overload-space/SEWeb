@@ -41,9 +41,10 @@
                 <!-- End Home -->
 
                 <!-- Home -->
-                <li><a href="#">通知</a></li>
+                <li><a href="message">通知</a></li>
                 <!-- End Home -->
 
+                <li><a href="resource">资料</a></li>
                 <!-- Home -->
                 <li><a href="#">作业</a></li>
                 <!-- End Home -->
