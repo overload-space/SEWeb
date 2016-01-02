@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     @Autowired
     private Database database;
+
     @RequestMapping(method = RequestMethod.GET)
     public String get(HttpSession session) {
         System.out.println("get");
@@ -28,7 +29,6 @@ public class LoginController {
       //  System.out.println(sql);
         boolean ret = database.exists(sql);
         if(ret) {
-            System.out.println("yes!");
             session.setAttribute("failed",0);
             session.setAttribute("studentID",student.getId()+" 退出");
             return "index";
