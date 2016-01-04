@@ -1,29 +1,42 @@
 # SEWeb
 软件工程课程网站
 
-## Commit内容 _ by 高端 2016.1.2
+## Commit内容 _ by 高端 2016.1.4
 + 增加通知的查看
 + 增加管理员对通知的修改和删除
-> 为方便测试，传递isAdmin默认为真。
+    isAdmin目前改为在Student里一个静态函数中判断，用户id为1、2、3等并检查通过的视为admin。
 
-下面是我测试用的数据库结构，对应的Model在model目录下的Message类中。
-> 王雨阳同学负责这部分内容，最后merge的时候以王雨阳同学的数据库和model为准。
+下面是更新的数据库结构（来自王雨阳同学）：
 
 ```sql
 CREATE table `SEWeb`.`Message` (
 	`ID`  int not null,
-	 `Time` DATETIME NULL,
-     `Subject` VARCHAR(10897) NOT NULL,
+	 `CreateAt` DATETIME NULL,
+     `Title` VARCHAR(10897) NOT NULL,
 	 `Content` VARCHAR(10897) NULL,
      `Important` BIT(1) NULL,
-      `Read` BIT(1) NULL,
+      `IsRead` BIT(1) NULL,
  PRIMARY KEY (`ID`));
- 
+   ALTER TABLE  SEWeb.Message MODIFY Content longtext;          
 ```
-+ 增加资料的显示界面
-> 目前还没有对应的后端，没有进行测试。
 
++ 增加资料的显示
++ 增加管理员对资料的修改和删除
 
+```sql
+CREATE table `SEWeb`.`Resource` (
+	`ID`  int not null,
+	 `CreateAt` DATETIME NULL,
+     `FileName` VARCHAR(500) NOT NULL,
+	 `Description` VARCHAR(10897) NULL,
+     `FileUrl` varchar(500) NULL,
+ PRIMARY KEY (`ID`));
+```
+
+## To-do
+- 消息大小限制提示（太大的图片会突破longtext的长度，导致错误）；
+- 资料多个文件同时上传的id设置（time一样，hashcode一样，会冲突）
+- 资料格式的过滤（目前还没有对上传文件的格式过滤）
 
 -------------------------
 

@@ -29,7 +29,7 @@ public class MessageDAO {
         return message;
     }
     public static List<Message> getMessageList(Database database){
-        String sql = "select * from Message";
+        String sql = "select * from Message order by CreateAt DESC";
         List <Message> MessageList = database.getList(sql,new MessageMapper());
         return MessageList;
     }

@@ -30,7 +30,7 @@ public class LoginController {
         boolean ret = database.exists(sql);
         if(ret) {
             session.setAttribute("failed",0);
-            session.setAttribute("studentID",student.getId()+" 退出");
+            session.setAttribute("studentID",student.getId());
             return "index";
         }
         else {

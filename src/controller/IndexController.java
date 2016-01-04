@@ -1,5 +1,6 @@
 package controller;
 
+import Common.MessageDAO;
 import model.Database;
 import model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/")
@@ -20,13 +22,10 @@ public class IndexController {
 
 
     public String get(HttpSession session) {
-        ArrayList<Message> messages=null;
+        List<Message> messages=null;
 
-        try {
-            messages = Message.getAllMessages(database);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        messages = MessageDAO.getMessageList(database);
+
         session.setAttribute("messageIndex",messages);
 
         return "index";

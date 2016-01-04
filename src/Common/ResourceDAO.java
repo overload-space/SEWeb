@@ -29,7 +29,7 @@ public class ResourceDAO {
         return resource;
     }
     public static List<Resource> getResourceList(Database database){
-        String sql = "select * from resource";
+        String sql = "select * from resource order by CreateAt DESC";
         List <Resource> ResourceList = database.getList(sql,new ResourceMapper());
         return ResourceList;
     }
