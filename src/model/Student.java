@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Arrays;
+
 public class Student {
     private String id;
     private String name;
@@ -10,6 +12,16 @@ public class Student {
 
     public Student() {
 
+    }
+    public  static boolean isAdmin(String amount) {
+        System.out.println("admin: "+amount);
+        String[] admin_amount={"1","2","3","4"};
+        if(Arrays.asList(admin_amount).contains(amount)) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public String getId() {

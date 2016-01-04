@@ -1,5 +1,6 @@
 package controller;
 
+import Common.MessageDAO;
 import model.Database;
 import model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +28,12 @@ public class ModifyMessageController {
     public String post(HttpSession session,@RequestParam("content") String content,@RequestParam("title") String title,@RequestParam("id") String _id) {
         int id = Integer.parseInt(_id);
         Message message=new Message();
-        try {
-            message=Message.getMessage(database,id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+        message= MessageDAO.getMessage(database,id);
+
         message.setSubject(title);
         message.setContent(content);
-        message.update(database,id,"Subject",title);
-        message.update(database,id,"Content",content);
+        MessageDAO.updateMessage(database,id,message);
 
         return "redirect:message";
     }

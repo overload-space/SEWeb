@@ -1,5 +1,6 @@
 package controller;
 
+import Common.MessageDAO;
 import model.Database;
 import model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +30,9 @@ public class NewMessageController {
         }
         else if(type.equals("modify")) {
             Message message=new Message();
-            try {
-                message=Message.getMessage(database,Integer.parseInt(id));
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+
+            message= MessageDAO.getMessage(database,Integer.parseInt(id));
+
             System.out.println("id"+id);
             System.out.println(message.getSubject());
             System.out.println(message.getContent());
@@ -44,8 +43,7 @@ public class NewMessageController {
         }
         else if(type.equals("delete")) {
             System.out.println("delete: "+id);
-            Message message=new Message();
-            message.delete(database,Integer.parseInt(id));
+            MessageDAO.deleteMessage(database,Integer.parseInt(id));
             return "redirect:message";
         }
         return "newMessage";
@@ -56,7 +54,7 @@ public class NewMessageController {
 
        System.out.println("content: "+content+"\n title: "+title);
         Message message = new Message(title,content);
-        message.insert(database);
+        MessageDAO.sendMessage(database,message);
         return "redirect:message";
     }
 }

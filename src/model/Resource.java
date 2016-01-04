@@ -5,9 +5,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 /**
  * Created by user on 2016/1/2.
  */
+
+
 public class Resource {
     private int id;
     private Timestamp time;
