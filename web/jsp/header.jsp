@@ -8,17 +8,20 @@
         <!-- End Logo -->
 
         <!-- Topbar -->
-        <%
-            String studentID=(String)session.getAttribute("studentID");
+        <%String studentID=(String)session.getAttribute("studentID");
+            String show_content=studentID;
             if(studentID==null) {
-                studentID="登录";
+                show_content="登录";
+            }
+            else if(!studentID.equals("登录")) {
+                show_content=studentID+" 退出";
             }
         %>
         <div class="topbar">
             <ul class="loginbar pull-right">
                 <li><a href="#">帮助</a></li>
                 <li class="topbar-devider"></li>
-                <li><a href="login"><%=studentID%></a></li>
+                <li><a href="login"><%=show_content%></a></li>
                 <li class="topbar-devider"></li>
                 <li><a href="register">注册</a></li>
             </ul>

@@ -1,7 +1,9 @@
 package controller;
 
+import Common.MessageDAO;
 import model.Database;
 import model.Message;
+import model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("message")
@@ -21,33 +24,26 @@ public class MessageController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String get(HttpSession session) {
+        List<Message> messages=null;
 
-
-        ArrayList<Message> messages=null;
-
-        try {
-            messages = Message.getAllMessages(db);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        messages = MessageDAO.getMessageList(db);
 
         session.setAttribute("messages",messages);
         session.setAttribute("itemPerPage",5);
         session.setAttribute("begin_num","1");
-        session.setAttribute("isAdmin",true);
+
+        String id=(String)session.getAttribute("studentID");
+        System.out.println(id);
+        session.setAttribute("isAdmin", Student.isAdmin(id));
 
         return "message";
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String post(HttpSession session,@RequestParam("postType") String type) {
-        ArrayList<Message> messages=null;
+        List<Message> messages=null;
+        messages = MessageDAO.getMessageList(db);
 
-        try {
-            messages = Message.getAllMessages(db);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         System.out.println("begin:"+type);
 
         session.setAttribute("messages",messages);

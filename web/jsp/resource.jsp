@@ -2,6 +2,7 @@
 <%@ page import="model.Message" %>
 <%@ page import="model.Resource" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <!--[if IE 7]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -58,7 +59,7 @@
         <div class="row">
 
             <div class="col-md-9">
-                <div class="headline"><h2>通知</h2></div>
+                <div class="headline"><h2>资料</h2></div>
                 <%
                     boolean isAdmin = (Boolean)session.getAttribute("isAdmin");
                     if(isAdmin) {
@@ -79,21 +80,21 @@
                             System.out.println(resources.size());
                             out.print(" <div class=\"row clients-page\">  <div class=\"col-md-10\">");
 
+                            out.print("<button class=\"btn btn-link\" name=\""+resource.getFileUrl()+resource.getFileName()+"\" onclick=\"return fn(this.name)\">"+resource.getFileName()+"</button>\n");
 
-                            out.print("<h3>"+resource.getDescription()+"</h3>");
+
 
                             if(isAdmin) {
                                 out.print("&nbsp&nbsp&nbsp<button offset=5px class=\"btn btn-info btn-mini\" type=\"button\" name=\""+resource.getId()+"\" onclick=\"return myclick2(this.name)\">修改</button>");
                                 out.print("&nbsp&nbsp&nbsp<button offset=5px class=\"btn btn-danger btn-mini\" type=\"button\" name=\""+resource.getId()+"\" onclick=\"return myclick3(this.name)\">删除</button>");
                             }
+                            out.print("<p>"+resource.getDescription()+"</p>");
 
-                            out.print("<a href="+resource.getFileUrl()+" >"+resource.getFileName()+"</a>");
                             out.print(" </div> </div>");
                         }
                     }
 
                 %>
-
                 <!-- Pagination -->
                 <div class="text-center md-margin-bottom-30">
                     <p class="demo demo2">
@@ -164,8 +165,81 @@
 
     }
     f(<%=(resources.size()-1)/resourcePerPage+1%>,<%=resourceBeginNum%>);
-</script>
+    function fn(url) {
+        var form =$('<form></form>');
+        form.attr("method","post");
+        form.attr("action","downloadfile");
 
+        var field = $('<input></input>');
+        field.attr("type", "hidden");
+        field.attr("name", "fileurl");
+        field.attr("value", url);
+
+        form.append(field);
+        $(document.body).append(form);
+        form.submit();
+    }
+
+
+</script>
+<script>
+    function  myclick() {
+        var form =$('<form></form>');
+        form.attr("method","get");
+        form.attr("action","newResource");
+        var field = $('<input></input>');
+        field.attr("type", "hidden");
+        field.attr("name", "type");
+        field.attr("value", "new");
+
+        form.append(field);
+        field = $('<input></input>');
+        field.attr("type", "hidden");
+        field.attr("name", "id");
+        field.attr("value", null);
+        form.append(field);
+        $(document.body).append(form);
+        form.submit();
+    }
+    function myclick2(id) {
+        var form =$('<form></form>');
+        form.attr("method","get");
+        form.attr("action","newResource");
+
+        var field = $('<input></input>');
+        field.attr("type", "hidden");
+        field.attr("name", "type");
+        field.attr("value", "modify");
+
+        form.append(field);
+        field = $('<input></input>');
+        field.attr("type", "hidden");
+        field.attr("name", "id");
+        field.attr("value", id);
+        form.append(field);
+        $(document.body).append(form);
+        form.submit();
+    }
+    function myclick3(id) {
+        var form =$('<form></form>');
+        form.attr("method","get");
+        form.attr("action","newResource");
+
+        var field = $('<input></input>');
+        field.attr("type", "hidden");
+        field.attr("name", "type");
+        field.attr("value", "delete");
+
+        form.append(field);
+        field = $('<input></input>');
+        field.attr("type", "hidden");
+        field.attr("name", "id");
+        field.attr("value", id);
+        form.append(field);
+        $(document.body).append(form);
+        form.submit();
+    }
+</script>
 
 </body>
 </html>
