@@ -58,34 +58,34 @@
 </head>
 
 <body>
-
-<%
-    List<Resource> attachmentList = (List<Resource>) session.getAttribute("attachmentList");
-    Homework homework = (Homework) session.getAttribute("homework");
-    Handin handin = (Handin) session.getAttribute("handin");
-    Resource handinAttachment = (Resource) session.getAttribute("handinAttachment");
-    Timestamp deadline = homework.getDeadline();
-    long lastTime = deadline.getTime() - new Date().getTime();
-    int deadlineStat = 0;
-    if (lastTime < 0) {
-        deadline = homework.getDelayDeadLine1();
-        lastTime = deadline.getTime() - new Date().getTime();
-        deadlineStat = 1;
-    }
-    if (lastTime < 0) {
-        deadline = homework.getDelayDeadLine2();
-        lastTime = deadline.getTime() - new Date().getTime();
-        deadlineStat = 2;
-    }
-    long lastDays = lastTime / (3600*24*1000);
-    long lastHours = (lastTime - lastDays*3600*24*1000) / (3600*1000);
-    long lastMinutes = (lastTime - lastDays*3600*24*1000 - lastHours*3600*1000) / (1000*60);
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-%>
 <div class="wrapper">
     <!--=== Header ===-->
     <%@include file="header.jsp"%>
     <!--=== End Header ===-->
+
+    <%
+        List<Resource> attachmentList = (List<Resource>) session.getAttribute("attachmentList");
+        Homework homework = (Homework) session.getAttribute("homework");
+        Handin handin = (Handin) session.getAttribute("handin");
+        Resource handinAttachment = (Resource) session.getAttribute("handinAttachment");
+        Timestamp deadline = homework.getDeadline();
+        long lastTime = deadline.getTime() - new Date().getTime();
+        int deadlineStat = 0;
+        if (lastTime < 0) {
+            deadline = homework.getDelayDeadLine1();
+            lastTime = deadline.getTime() - new Date().getTime();
+            deadlineStat = 1;
+        }
+        if (lastTime < 0) {
+            deadline = homework.getDelayDeadLine2();
+            lastTime = deadline.getTime() - new Date().getTime();
+            deadlineStat = 2;
+        }
+        long lastDays = lastTime / (3600*24*1000);
+        long lastHours = (lastTime - lastDays*3600*24*1000) / (3600*1000);
+        long lastMinutes = (lastTime - lastDays*3600*24*1000 - lastHours*3600*1000) / (1000*60);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+    %>
 
     <!--=== Content Part ===-->
     <div class="container content">

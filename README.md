@@ -40,8 +40,9 @@ CREATE TABLE `SEWeb`.`Student` (
   `Password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ID`));
   # 以下为更新内容，添加 checked标识和md5token值
- alter table  `SEWeb`.`Student` add `checked` int NOT NULL;
+ alter table  `SEWeb`.`Student` add `checked` bit(1) NOT NULL;
  alter table  `SEWeb`.`Student` add `md5token` VARCHAR(45);
+ alter table  `SEWeb`.`Student` add `Level` int NOT NULL;
 ```
 
 下面是更新的数据库结构（来自王雨阳同学）：

@@ -8,7 +8,10 @@
         <!-- End Logo -->
 
         <!-- Topbar -->
-        <%String studentID=(String)session.getAttribute("studentID");
+        <%
+            String studentID=(String)session.getAttribute("studentID");
+            boolean isAdmin = false;
+            /*
             String show_content=studentID;
             String show_right = "注册";
             String url_left = "/login";
@@ -19,15 +22,49 @@
             else {//if(!studentID.equals("登录")) {
                 show_content=studentID;
                 show_right = "退出";
-                url_left = "#";
+                url_left = "javascript:void(0)";
                 url_right = "/logout";
-            }
+            }*/
         %>
         <div class="topbar">
             <ul class="loginbar pull-right">
-                <li><a href="<%=url_left%>"><%=show_content%></a></li>
-                <li class="topbar-devider"></li>
-                <li><a href="<%=url_right%>"><%=show_right%></a></li>
+                <%
+                    if (studentID == null) {
+                        out.print(
+                                "<li>\n" +
+                                    "<a href=\"/login\">登录</a>\n" +
+                                "</li>\n" +
+                                "<li class=\"topbar-devider\"></li>\n" +
+                                "<li><a href=\"/register\">注册</a></li>"
+                        );
+                    } else {
+                        isAdmin = (boolean) session.getAttribute("isAdmin");
+                        if (isAdmin) {
+                            out.print(
+                                    "<li class=\"hoverSelector\">\n" +
+                                            "<a>"+ studentID +"</a>\n" +
+                                            "<ul class=\"languages hoverSelectorBlock\">\n" +
+                                            "<li><a href=\"#\">修改个人信息</a></li>\n" +
+                                            "<li><a href=\"/studentManager\">学生管理</a></li>\n" +
+                                            "</ul>\n" +
+                                            "</li>\n" +
+                                            "<li class=\"topbar-devider\"></li>\n" +
+                                            "<li><a href=\"/logout\">退出</a></li>"
+                            );
+                        } else {
+                            out.print(
+                                    "<li class=\"hoverSelector\">\n" +
+                                            "<a>"+ studentID +"</a>\n" +
+                                            "<ul class=\"languages hoverSelectorBlock\">\n" +
+                                            "<li><a href=\"#\">修改个人信息</a></li>\n" +
+                                            "</ul>\n" +
+                                            "</li>\n" +
+                                            "<li class=\"topbar-devider\"></li>\n" +
+                                            "<li><a href=\"/logout\">退出</a></li>"
+                            );
+                        }
+                    }
+                %>
             </ul>
         </div>
         <!-- End Topbar -->

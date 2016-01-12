@@ -54,22 +54,22 @@
 </head>
 
 <body>
-<%
-    List<Homework> homeworkList = (List<Homework>) session.getAttribute("homeworkList");
-    boolean isAdmin = (boolean) session.getAttribute("isAdmin");
-    String hide = "hide";
-    if (isAdmin) {
-        hide = "";
-    }
-    int currentPage = (int) session.getAttribute("page");
-    int numPerPage = 5;
-    int beginIndex = (currentPage - 1) * numPerPage;
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-%>
 <div class="wrapper">
     <!--=== Header ===-->
     <%@include file="header.jsp"%>
     <!--=== End Header ===-->
+
+    <%
+        List<Homework> homeworkList = (List<Homework>) session.getAttribute("homeworkList");
+        String hide = "hide";
+        if (isAdmin) {
+            hide = "";
+        }
+        int currentPage = (int) session.getAttribute("page");
+        int numPerPage = 5;
+        int beginIndex = (currentPage - 1) * numPerPage;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+    %>
 
     <!--=== Content Part ===-->
     <div class="container content">

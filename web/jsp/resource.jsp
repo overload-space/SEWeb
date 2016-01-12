@@ -61,7 +61,6 @@
             <div class="col-md-9">
                 <div class="headline"><h2>资料</h2></div>
                 <%
-                    boolean isAdmin = (Boolean)session.getAttribute("isAdmin");
                     if(isAdmin) {
                         out.print("<div class=\"col-md-offset-1\"><button offset=5px class=\"btn-u\" type=\"button\" onclick=\"return myclick()\">上传资料</button>");
                         out.print("</div>");

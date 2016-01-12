@@ -1,30 +1,22 @@
 package model;
 
-import java.util.Arrays;
-
 public class Student {
-    private String id;
+    private int id;
     private String name;
     private String email;
     private String password;
     private boolean checked;
     private String md5token;
+    private int level;
 
     public Student() {
 
     }
-    public  static boolean isAdmin(String amount) {
-        System.out.println("admin: "+amount);
-        String[] admin_amount={"1","2","3","4"};
-        if(Arrays.asList(admin_amount).contains(amount)) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    public boolean isAdmin() {
+        return level > 0;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -46,7 +38,11 @@ public class Student {
 
     public String getMd5token() {return md5token;}
 
-    public void setId(String id) {
+    public int getLevel() {
+        return level;
+    }
+
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -65,4 +61,8 @@ public class Student {
     public void setChecked(boolean c) {this.checked=c;}
 
     public void setMd5token(String md5token) {this.md5token=md5token;}
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
 }
