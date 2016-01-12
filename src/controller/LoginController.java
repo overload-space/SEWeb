@@ -18,7 +18,6 @@ public class LoginController {
     @RequestMapping(method = RequestMethod.GET)
     public String get(HttpSession session) {
         System.out.println("get");
-        session.setAttribute("studentID","登录");
         session.setAttribute("failed",0);
         return "login";
     }
@@ -31,12 +30,13 @@ public class LoginController {
         if(ret) {
             session.setAttribute("failed",0);
             session.setAttribute("studentID",student.getId());
+
             String id=(String)session.getAttribute("studentID");
             session.setAttribute("isAdmin", Student.isAdmin(id));
             return "redirect:index";
+
         }
         else {
-            session.setAttribute("studentID","登录");
             session.setAttribute("failed",1);
             return "login";
         }

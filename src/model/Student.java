@@ -7,7 +7,7 @@ public class Student {
     private String name;
     private String email;
     private String password;
-    private int checked;
+    private boolean checked;
     private String md5token;
 
     public Student() {
@@ -40,7 +40,9 @@ public class Student {
         return password;
     }
 
-    public int getChecked() {return checked;}
+    public boolean isChecked() {
+        return checked;
+    }
 
     public String getMd5token() {return md5token;}
 
@@ -60,7 +62,7 @@ public class Student {
         this.password = password;
     }
 
-    public void setChecked(int c) {this.checked=c;}
+    public void setChecked(boolean c) {this.checked=c;}
 
     public void setMd5token(String md5token) {this.md5token=md5token;}
 }

@@ -40,11 +40,8 @@
 
     <link href="/static/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="/static/INSPINIA/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="/static/INSPINIA/css/animate.css" rel="stylesheet">
     <link href="/static/INSPINIA/css/plugins/dropzone/basic.css" rel="stylesheet">
     <link href="/static/INSPINIA/css/plugins/dropzone/dropzone.css" rel="stylesheet">
-    <link href="/static/INSPINIA/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -89,24 +86,7 @@
                         <div class="col-lg-12">
                             <div class="ibox float-e-margins">
                                 <div class="ibox-title">
-                                    <h5>Dropzone Area</h5>
-                                    <div class="ibox-tools">
-                                        <a class="collapse-link">
-                                            <i class="fa fa-chevron-up"></i>
-                                        </a>
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                            <i class="fa fa-wrench"></i>
-                                        </a>
-                                        <ul class="dropdown-menu dropdown-user">
-                                            <li><a href="#">Config option 1</a>
-                                            </li>
-                                            <li><a href="#">Config option 2</a>
-                                            </li>
-                                        </ul>
-                                        <a class="close-link">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
+                                    <h3>上传文件</h3>
                                 </div>
                                 <div class="ibox-content" style="display: block;">
                                     <form id="dropzone-form" class="dropzone"
@@ -116,8 +96,7 @@
                                             <input type="hidden" name="type" id="type" value="<%=type%>">
                                             <input type="hidden" name="id" id="id" value="<%=id%>">
                                         </div>
-                                        <div
-                                                class="dz-default dz-message file-dropzone text-center well col-sm-12">
+                                        <div class="dz-default dz-message file-dropzone text-center well col-sm-12">
 
                                             <span class="glyphicon glyphicon-paperclip"></span> <span>
 								To attach files, drag and drop here</span><br> <span>OR</span><br>
@@ -128,12 +107,9 @@
                                         <div class="dropzone-previews"></div>
                                     </form>
                                     <hr>
-                                    <button id="upload-button" class="btn btn-primary">
-                                        <span class="glyphicon glyphicon-upload"></span> Upload
+                                    <button id="upload-button" class="btn btn-u">
+                                        <span class="glyphicon glyphicon-upload"></span> 上传
                                     </button>
-                                    <div>
-                                        <div class="m text-right"><small>DropzoneJS is an open source library that provides drag'n'drop file uploads with image previews: <a href="https://github.com/enyo/dropzone" target="_blank">https://github.com/enyo/dropzone</a></small> </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -154,14 +130,16 @@
 </div><!--/wrapper-->
 
 <!-- JS Global Compulsory -->
-
-
-<script type="text/javascript" src="/static/INSPINIA/js/plugins/pace/pace.min.js"></script>
-<script type="text/javascript"  src="/static/INSPINIA/js/inspinia.js"></script>
-<script type="text/javascript" src="/static/INSPINIA/js/jquery-2.1.1.js"></script>
-<script type="text/javascript" src="/static/INSPINIA/js/bootstrap.min.js"></script>
-<script type="text/javascript"  src="/static/INSPINIA/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script  type="text/javascript" src="/static/INSPINIA/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script type="text/javascript" src="/static/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="/static/plugins/jquery/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="/static/plugins/back-to-top.js"></script>
+<script type="text/javascript" src="/static/plugins/smoothScroll.js"></script>
+<!-- JS Customization -->
+<script type="text/javascript" src="/static/js/custom.js"></script>
+<!-- JS Page Level -->
+<script type="text/javascript" src="/static/js/app.js"></script>
 <script  type="text/javascript" src="/static/INSPINIA/js/plugins/dropzone/dropzone.js"></script>
 
 <script>

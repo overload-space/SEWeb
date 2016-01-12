@@ -12,22 +12,31 @@
         <!-- Topbar -->
         <%String studentID=(String)session.getAttribute("studentID");
             String show_content=studentID;
+            String show_right = "注册";
+            String url_left = "/login";
+            String url_right = "/register";
             if(studentID==null) {
                 show_content="登录";
             }
-            else if(!studentID.equals("登录")) {
-                show_content=studentID+" 退出";
+            else {//if(!studentID.equals("登录")) {
+                show_content=studentID;
+                show_right = "退出";
+                url_left = "#";
+                url_right = "/logout";
             }
         %>
         <div class="topbar">
             <ul class="loginbar pull-right">
-                <li><a href="page_faq.html">帮助</a></li>
+                <li><a href="<%=url_left%>"><%=show_content%></a></li>
                 <li class="topbar-devider"></li>
                 <li><a href="login"><%=show_content%></a></li>
                 <li class="topbar-devider"></li>
                 <li><a href="register">注册</a></li>
                 <li class="topbar-devider"></li>
                 <li><a href="modify">修改</a></li>
+
+                <li><a href="<%=url_right%>"><%=show_right%></a></li>
+
             </ul>
         </div>
 
@@ -51,12 +60,12 @@
                 <!-- End Home -->
 
                 <!-- Home -->
-                <li><a href="message">通知</a></li>
+                <li><a href="/message">通知</a></li>
                 <!-- End Home -->
 
-                <li><a href="resource">资料</a></li>
+                <li><a href="/resource">资料</a></li>
                 <!-- Home -->
-                <li><a href="#">作业</a></li>
+                <li class="active"><a href="/homework">作业</a></li>
                 <!-- End Home -->
 
                 <!-- Search Block -->
