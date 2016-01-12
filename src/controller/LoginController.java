@@ -31,7 +31,9 @@ public class LoginController {
         if(ret) {
             session.setAttribute("failed",0);
             session.setAttribute("studentID",student.getId());
-            return "index";
+            String id=(String)session.getAttribute("studentID");
+            session.setAttribute("isAdmin", Student.isAdmin(id));
+            return "redirect:index";
         }
         else {
             session.setAttribute("studentID","登录");

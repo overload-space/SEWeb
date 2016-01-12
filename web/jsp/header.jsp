@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <div class="header">
     <div class="container">
         <!-- Logo -->
@@ -24,8 +26,12 @@
                 <li><a href="login"><%=show_content%></a></li>
                 <li class="topbar-devider"></li>
                 <li><a href="register">注册</a></li>
+                <li class="topbar-devider"></li>
+                <li><a href="modify">修改</a></li>
             </ul>
         </div>
+
+
         <!-- End Topbar -->
 
         <!-- Toggle get grouped for better mobile display -->
@@ -41,7 +47,7 @@
         <div class="container">
             <ul class="nav navbar-nav">
                 <!-- Home -->
-                <li><a href="/">主页</a></li>
+                <li><a href="index">主页</a></li>
                 <!-- End Home -->
 
                 <!-- Home -->

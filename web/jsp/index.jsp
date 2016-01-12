@@ -1,5 +1,6 @@
 <%@ page import="model.Message" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Student" %><%--
   Created by IntelliJ IDEA.
   User: Cloud
   Date: 15/12/7
@@ -63,7 +64,8 @@
 
                <%
                    ArrayList<Message> messages= (ArrayList<Message>) session.getAttribute("messageIndex");
-
+                   ArrayList<Student> admins = (ArrayList<Student>)session.getAttribute("admins");
+                   String courseInformation = (String) session.getAttribute("courseInformation");
 
                 if(messages != null) {
                 for(int i=0;i<3 && i<messages.size();i++) {
@@ -93,22 +95,29 @@
 
             <div class="col-md-3">
                 <!-- Our Services -->
+                <form class="reg-page" action="index" method="post">
                 <div class="who margin-bottom-30">
                     <div class="headline"><h2>课程介绍</h2></div>
-                    <p>At vero eos et accusamus et iusto odio dign issimos ducimus qui blanditiis iusto.</p>
-                    <ul class="list-unstyled">
-                        <li><a href="#"><i class="fa fa-desktop"></i>Vivamus imperdiet condimentum</a></li>
-                        <li><a href="#"><i class="fa fa-bullhorn"></i>Anim pariatur cliche squid</a></li>
-                        <li><a href="#"><i class="fa fa-globe"></i>Eget placerat felis consectetur</a></li>
-                        <li><a href="#"><i class="fa fa-group"></i>Condimentum diam eget placerat</a></li>
-                    </ul>
+                    <%
+                        boolean isAdmin = (Boolean)session.getAttribute("isAdmin");
+                        System.out.println(isAdmin);
+                    %>
+                    <textarea class="form-control" rows="7" id="text1" name="textarea"></textarea>
                 </div>
-
+                </form>
                 <!-- About Us -->
                 <div class="headline"><h2>教师与助教</h2></div>
                 <div class="margin-bottom-30">
-                    <p>At vero eos et acc usamus et iusto odio dign issimos ducimus atque corrupti quos.</p>
-                    <p>dolores etrerum facilis est etenim a feugiat cupiditate non quos. <a class="linked color-green" href="#">Read more</a></p>
+                    <span >
+                    <%
+                            for(Student i : admins) {
+                                out.print("<p>"+i.getName()+"</p>");
+                                out.print("<p>"+i.getEmail()+"</p>");
+                                out.print("</br>");
+                            }
+                    %>
+
+                    </span>
                 </div>
 
             </div><!--/col-md-3-->
@@ -143,5 +152,24 @@
 <script src="/static/plugins/placeholder-IE-fixes.js"></script>
 <![endif]-->
 
+<script type="text/javascript">
+    jQuery('#text1').on('keyup', function(e) {
+        if (e.which == 13 && ! e.shiftKey) {
+            alert(e.which);
+            this.form.submit();
+        }
+    });
+
+    jQuery('#text1').val('<%=courseInformation%>');
+
+    function update(flag) {
+        if(flag == false) {
+            $("#text1").prop("disabled", true);
+        }
+
+    }
+    update(<%=isAdmin%>);
+
+</script>
 </body>
 </html>

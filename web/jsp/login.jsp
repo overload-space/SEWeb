@@ -121,7 +121,6 @@
 <![endif]-->
 <script>
     function update(value) {
-
         if(1 == value) {
             document.getElementById("warning").innerHTML="<div id=\"myAlert\" class=\"alert alert-warning\">\
             <a href=\"#\" class=\"close\" data-dismiss=\"alert\">&times;</a>\
@@ -131,7 +130,6 @@
         else {
             document.getElementById("warning").innerHTML="";
         }
-
     }
     update(<%=failed%>);
 </script>

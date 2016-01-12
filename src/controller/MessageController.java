@@ -33,7 +33,6 @@ public class MessageController {
         session.setAttribute("begin_num","1");
 
         String id=(String)session.getAttribute("studentID");
-        System.out.println(id);
         session.setAttribute("isAdmin", Student.isAdmin(id));
 
         return "message";
