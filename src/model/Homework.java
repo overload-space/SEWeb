@@ -1,4 +1,4 @@
-package Common;
+package model;
 
 import model.Database;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +7,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import java.io.*;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Vincent Huang on 2016/1/1.
@@ -14,10 +18,34 @@ import java.io.*;
 
 
 
-public class homework {
+public class Homework {
+    private int homeworkID;
+    private String title;
+    private String content;
+    private Timestamp createAt;
+    private Timestamp deadline;
+    private Timestamp delayDeadLine1;
+    private Timestamp delayDeadLine2;
+    private boolean hasAttachment;
 
-    Database database = (Database)new FileSystemXmlApplicationContext("/web/WEB-INF/SEWeb-servlet.xml").getBean("database");
+    //Database database = (Database)new FileSystemXmlApplicationContext("/web/WEB-INF/SEWeb-servlet.xml").getBean("database");
 
+    public Homework() {}
+
+    public Homework(String title, String content, Timestamp deadline, boolean hasAttachment) {
+        this.title = title;
+        this.content = content;
+        this.deadline = deadline;
+        this.hasAttachment = hasAttachment;
+        SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = dateformat.format(new Date());
+        try {
+            this.createAt = new Timestamp(dateformat.parse(time).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        homeworkID = this.createAt.hashCode();
+    }
 
     /*获取文件名*/
     public String get_filename(String target){
@@ -27,7 +55,7 @@ public class homework {
     }
 
     /*以“keyword_学号_姓名.zip”的格式上传作业*/
-    public boolean check_format(String name,int id){
+    public boolean check_format(Database database, String name,int id){
         String[] s1 = name.split("\\.");//表示用.去切割字符串
         String[] s2 = name.split("\\_");//表示用_去切割字符串
         String form= "."+s1[s1.length-1];//用.连接最后一个字符
@@ -47,7 +75,7 @@ public class homework {
 
 
     /*上传作业,target为文件位置，destination为需要存入的文件夹目录，delay为延迟次数（以00,01,02记录）,homeworkid 为作业编号，studentid为学生id*/
-    public void upload(String target, String destination,String delay,int homeworkid,int studentid){
+    public void upload(Database database, String target, String destination,String delay,int homeworkid,int studentid){
         try {
             int bytesum = 0;
             int byteread = 0;
@@ -56,7 +84,7 @@ public class homework {
             if (oldfile.exists()) { //文件存在时
                 InputStream inStream = new FileInputStream(target); //读入原文件
                 String name=get_filename(target);
-                if(check_format(name,homeworkid))
+                if(check_format(database,name,homeworkid))
                 {
                     String[] s1 = name.split("\\_");
                     File file;
@@ -104,7 +132,7 @@ public class homework {
     }
 
     /*删除作业*/
-    public void delete(String target,int homeworkid,int studentid){
+    public void delete(Database database, String target,int homeworkid,int studentid){
          File  file = new File(target);
         // 路径为文件且不为空则进行删除
         if (file.isFile() && file.exists()) {
@@ -124,24 +152,21 @@ public class homework {
     }
 
     /*替换当前作业*/
-    public void change(String target,String destination,String delay,int homeworkid,int studentid){
+    public void change(Database database, String target,String destination,String delay,int homeworkid,int studentid){
         String[] s1 = target.split("\\_");
         String[] s2=s1[0].split("\\//");
-        delete(destination+"//"+s2[1]+"//"+get_filename(target),homeworkid,studentid);
-        upload(target,destination,delay,homeworkid,studentid);
+        delete(database,destination+"//"+s2[1]+"//"+get_filename(target),homeworkid,studentid);
+        upload(database,target,destination,delay,homeworkid,studentid);
     }
 
-    public void set_homwork(int homeworkid,String keyword,String title,String content,String deadline,String deadline1,String deadline2) {
-        String sql = "insert into homework values('"+homeworkid+"','"+keyword+"','"+ title+"','"+ content+"','"+ deadline+"','"+ deadline1+"','"+ deadline2+"');";
-        database.insert(sql);
-    }
 
-    public void delete_set(int homeworkid){
+
+    public void delete_set(Database database, int homeworkid){
         String sql = "delete from homework where homeworkID="+homeworkid+";";
         database.insert(sql);
     }
 
-    public void change_set(int homeworkid,String keyword,String title,String content,String deadline,String deadline1,String deadline2){
+    public void change_set(Database database, int homeworkid,String keyword,String title,String content,String deadline,String deadline1,String deadline2){
         String sql = "update homework set keyword='"+keyword+"' where homeworkID="+homeworkid+";";
         database.insert(sql);
         String sql1 = "update homework set title='"+title+"' where homeworkID="+homeworkid+";";
@@ -156,7 +181,69 @@ public class homework {
         database.insert(sql5);
     }
 
+    public int getHomeworkID() {
+        return homeworkID;
+    }
 
+    public Timestamp getCreateAt() {
+        return createAt;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public Timestamp getDeadline() {
+        return deadline;
+    }
+
+    public Timestamp getDelayDeadLine1() {
+        return delayDeadLine1;
+    }
+
+    public Timestamp getDelayDeadLine2() {
+        return delayDeadLine2;
+    }
+
+    public boolean isHasAttachment() {
+        return hasAttachment;
+    }
+
+    public void setHomeworkID(int homeworkID) {
+        this.homeworkID = homeworkID;
+    }
+
+    public void setCreateAt(Timestamp createAt) {
+        this.createAt = createAt;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setDeadline(Timestamp deadline) {
+        this.deadline = deadline;
+    }
+
+    public void setDelayDeadLine1(Timestamp delayDeadLine1) {
+        this.delayDeadLine1 = delayDeadLine1;
+    }
+
+    public void setDelayDeadLine2(Timestamp delayDeadLine2) {
+        this.delayDeadLine2 = delayDeadLine2;
+    }
+
+    public void setHasAttachment(boolean hasAttachment) {
+        this.hasAttachment = hasAttachment;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     /*测试*/
    /* public static void main(String arg[]) {

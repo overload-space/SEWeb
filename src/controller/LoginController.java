@@ -18,7 +18,7 @@ public class LoginController {
     @RequestMapping(method = RequestMethod.GET)
     public String get(HttpSession session) {
         System.out.println("get");
-        session.setAttribute("studentID","登录");
+        //session.setAttribute("studentID","登录");
         session.setAttribute("failed",0);
         return "login";
     }
@@ -30,11 +30,11 @@ public class LoginController {
         boolean ret = database.exists(sql);
         if(ret) {
             session.setAttribute("failed",0);
-            session.setAttribute("studentID",student.getId()+" 退出");
+            session.setAttribute("studentID",student.getId());
             return "redirect:/";
         }
         else {
-            session.setAttribute("studentID","登录");
+            //session.setAttribute("studentID","登录");
             session.setAttribute("failed",1);
             return "login";
         }

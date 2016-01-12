@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class ResourceDAO {
     public static void sendResource(Database database, Resource resource){
-        String sql="insert into resource (ID, CreateAt, FileName, Description, FileUrl) values ("+resource.getId()+",'"+ resource.getTime() +"','"+resource.getFileName()+"','"+resource.getDescription()+"','"+resource.getFileUrl()+"')";
+        String sql="insert into resource (ID, CreateAt, FileName, Description, FileUrl, HomeworkID) values ("+resource.getId()+",'"+ resource.getTime() +"','"+resource.getFileName()+"','"+resource.getDescription()+"','"+resource.getFileUrl()+"','"+resource.getHomeworkID()+"');";
         database.insert(sql);
     }
     public static void updateResource(Database database,int oldId,Resource newResource){
@@ -29,7 +29,7 @@ public class ResourceDAO {
         return resource;
     }
     public static List<Resource> getResourceList(Database database){
-        String sql = "select * from resource order by CreateAt DESC";
+        String sql = "select * from resource where HomeworkID = '0' order by CreateAt DESC";
         List <Resource> ResourceList = database.getList(sql,new ResourceMapper());
         return ResourceList;
     }

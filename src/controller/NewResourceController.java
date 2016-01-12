@@ -135,7 +135,7 @@ public class NewResourceController {
         testPath+="/Resource/";
         testPath=testPath.substring(6);
 
-
+        //testPath = "/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/Resource/";
         return testPath;
     }
 }

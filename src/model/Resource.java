@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 
 /**
@@ -17,6 +18,7 @@ public class Resource {
     private String fileName;
     private String description;
     private String fileUrl;
+    private int homeworkID;
 
     public Resource() {
         SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -27,6 +29,7 @@ public class Resource {
             e.printStackTrace();
         }
         id= this.time.hashCode();
+        homeworkID = 0;
     }
     public Resource(String fileName,String description,String fileUrl){
         SimpleDateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -36,10 +39,11 @@ public class Resource {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        id= this.time.hashCode();
+        id= this.time.hashCode()+fileName.hashCode();
         this.fileName=fileName;
         this.description=description;
         this.fileUrl=fileUrl;
+        homeworkID = 0;
     }
 
     public String getDescription() {
@@ -55,6 +59,7 @@ public class Resource {
     }
 
     public void setFileName(String fileName) {
+        id = time.hashCode()+fileName.hashCode();
         this.fileName = fileName;
     }
 
@@ -82,4 +87,11 @@ public class Resource {
         this.time = time;
     }
 
+    public int getHomeworkID() {
+        return homeworkID;
+    }
+
+    public void setHomeworkID(int homeworkID) {
+        this.homeworkID = homeworkID;
+    }
 }
