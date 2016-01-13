@@ -15,6 +15,7 @@ import org.springframework.web.context.request.async.StandardServletAsyncWebRequ
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -42,6 +43,14 @@ public class IndexController {
 
         StringBuilder courseInformation=new StringBuilder();
 
+
+        if(!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         Scanner input=null;
         try {
            input = new Scanner(file);

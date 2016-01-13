@@ -1,19 +1,6 @@
 # SEWeb
 软件工程课程网站
 
-## Commit内容 _ by 高端 2016.1.4
-+ 增加通知的查看
-+ 增加管理员对通知的修改和删除
-    isAdmin目前改为在Student里一个静态函数中判断，用户id为1、2、3等并检查通过的视为admin。
-
-
-
-## To-do
-- 消息大小限制提示（太大的图片会突破longtext的长度，导致错误）；
-- 资料多个文件同时上传的id设置（time一样，hashcode一样，会冲突）
-- 资料格式的过滤（目前还没有对上传文件的格式过滤）
-
--------------------------
 
 ## 目录说明
 
@@ -37,13 +24,12 @@ CREATE TABLE `SEWeb`.`Student` (
   `Email` VARCHAR(45) NOT NULL,
   `Password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ID`));
-  # 以下为更新内容，添加 checked标识和md5token值
+
  alter table  `SEWeb`.`Student` add `checked` bit(1) NOT NULL;
  alter table  `SEWeb`.`Student` add `md5token` VARCHAR(45);
  alter table  `SEWeb`.`Student` add `Level` int NOT NULL;
 ```
 
-下面是更新的数据库结构（来自王雨阳同学）：
 
 ```sql
 CREATE table `SEWeb`.`Message` (
@@ -54,12 +40,10 @@ CREATE table `SEWeb`.`Message` (
      `Important` BIT(1) NULL,
       `IsRead` BIT(1) NULL,
  PRIMARY KEY (`ID`));
-   ALTER TABLE  SEWeb.Message MODIFY Content longtext;          
+  ALTER TABLE  SEWeb.Message MODIFY Content longtext;          
 ```
 
-+ 增加资料的显示
-+ 增加管理员对资料的修改和删除
-
++ 资料
 ```sql
 CREATE table `SEWeb`.`Resource` (
 	`ID`  int not null,
@@ -83,7 +67,6 @@ CREATE TABLE `SEWeb`.`handin` (
 ```
 
 + 增加homework表,记录发布的作业信息
-
 ```sql
 CREATE TABLE `SEWeb`.`homework` (
   `homeworkID` INT NOT NULL,
@@ -96,3 +79,7 @@ CREATE TABLE `SEWeb`.`homework` (
   `hasAttachment` BIT(1) NOT NULL,
   PRIMARY KEY (`homeworkID`));
 ```
+
+> 首页的课程说明保存路径为D:/course_information.txt;
+> 资源文件保存目录为D:/Resources
+> 作业根目录为D:/Homework
