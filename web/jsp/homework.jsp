@@ -109,8 +109,8 @@
                             <li><i class="icon iconfont">&#xe60c;</i> <b>截止日期 : <%=simpleDateFormat.format(deadline)%></b></li>
                         </ul>
                         <p><%=homeworkList.get(i).getContent()%></p>
-                        <a class="btn btn-success btn-xs <%=hide%>" type="button" href="/homework/newHomework?type=modify&homeworkID=<%=homeworkList.get(i).getHomeworkID()%>">修改</a>
-                        <a class="btn btn-danger btn-xs <%=hide%>" type="button" href="/homework/newHomework?type=delete&homeworkID=<%=homeworkList.get(i).getHomeworkID()%>">删除</a>
+                        <a class="btn btn-success btn-sm <%=hide%>" type="button" href="/homework/newHomework?type=modify&homeworkID=<%=homeworkList.get(i).getHomeworkID()%>">修改</a>
+                        <a class="btn btn-danger btn-sm <%=hide%>" type="button" href="/homework/newHomework?type=delete&homeworkID=<%=homeworkList.get(i).getHomeworkID()%>">删除</a>
                     </div>
                 </div>
                 <!-- End Clients Block-->

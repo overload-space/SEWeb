@@ -60,7 +60,7 @@
     <div class="container content" id="page">
         <div class="row">
             <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-                <form class="reg-page" action="login" method="post">
+                <form class="reg-page" action="login" method="post" id="loginform">
                     <div class="reg-header">
                         <h2>登录课程网站</h2>
                     </div>
@@ -69,11 +69,12 @@
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
                         <input type="text" placeholder="学号" class="form-control" name="id">
                     </div>
+                    <div></div>
                     <div class="input-group margin-bottom-20">
                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                         <input type="password" placeholder="密码" class="form-control" name="password">
                     </div>
-
+                    <div></div>
                     <div class="row">
                         <div class="col-md-6 checkbox">
                             <label><input type="checkbox"> 下次自动登录</label>
@@ -109,9 +110,24 @@
 <script type="text/javascript" src="/static/js/custom.js"></script>
 <!-- JS Page Level -->
 <script type="text/javascript" src="/static/js/app.js"></script>
+<script type="text/javascript" src="/static/INSPINIA/js/plugins/validate/jquery.validate.min.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
+        $('#loginform').validate({
+            rules: {
+                id: {
+                    required: true,
+                    minlength: 1
+                },
+                password: {
+                    required: true
+                }
+            },
+            errorPlacement: function(error, element) {
+                error.appendTo(element.parent().next());
+            }
+        });
     });
 </script>
 <!--[if lt IE 9]>

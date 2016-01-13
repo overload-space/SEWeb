@@ -102,7 +102,9 @@
                                         <h4>邮箱</h4>
                                         <p><input class="form-control" type="email" name="email" /></p>
                                         <h4>密码</h4>
-                                        <p><input class="form-control" type="password" name="password" /></p>
+                                        <p><input class="form-control" type="password" name="password" id="password" /></p>
+                                        <h4>重复密码</h4>
+                                        <p><input class="form-control" type="password" name="passwordCheck" /></p>
                                         <br>
                                         <p class="pull-right <%=hide%>">
                                             <input type="checkbox" name="level" value="1" /><i></i><label>&nbsp;&nbsp;设为助教</label>
@@ -232,6 +234,7 @@
 <!-- JS Page Level -->
 <script type="text/javascript" src="/static/js/app.js"></script>
 <script type="text/javascript" src="/static/js/plugins/jquery.bootpag.js"></script>
+<script type="text/javascript" src="/static/INSPINIA/js/plugins/validate/jquery.validate.min.js"></script>
 <!-- Data Tables -->
 <script src="/static/INSPINIA/js/plugins/dataTables/jquery.dataTables.js"></script>
 <script src="/static/INSPINIA/js/plugins/dataTables/dataTables.bootstrap.js"></script>
@@ -263,6 +266,28 @@
             dom: 'lftp',
             pagingType: "full_numbers"//分页样式的类型
 
+        });
+        $('#responsive').validate({
+            rules: {
+                id: {
+                    required: true,
+                    minlength: 1
+                },
+                name: {
+                    required: true,
+                    minlength: 1
+                },
+                email: {
+                    required: true,
+                    minlength: 1
+                },
+                password: {
+                    required: true
+                },
+                passwordCheck: {
+                    equalTo: "#password"
+                }
+            }
         });
     });
 </script>
