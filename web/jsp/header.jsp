@@ -11,20 +11,7 @@
         <%
             String studentID=(String)session.getAttribute("studentID");
             boolean isAdmin = false;
-            /*
-            String show_content=studentID;
-            String show_right = "注册";
-            String url_left = "/login";
-            String url_right = "/register";
-            if(studentID==null) {
-                show_content="登录";
-            }
-            else {//if(!studentID.equals("登录")) {
-                show_content=studentID;
-                show_right = "退出";
-                url_left = "javascript:void(0)";
-                url_right = "/logout";
-            }*/
+
         %>
         <div class="topbar">
             <ul class="loginbar pull-right">
@@ -83,16 +70,16 @@
         <div class="container">
             <ul class="nav navbar-nav">
                 <!-- Home -->
-                <li><a href="/">主页</a></li>
+                <li id="indexHeader"><a href="/">主页</a></li>
                 <!-- End Home -->
 
                 <!-- Home -->
-                <li><a href="/message">通知</a></li>
+                <li id="messageHeader"><a href="/message">通知</a></li>
                 <!-- End Home -->
 
-                <li><a href="/resource">资料</a></li>
+                <li id="resourceHeader"><a href="/resource">资料</a></li>
                 <!-- Home -->
-                <li class="active"><a href="/homework">作业</a></li>
+                <li id="homeworkHeader"><a href="/homework">作业</a></li>
                 <!-- End Home -->
 
                 <!-- Search Block -->

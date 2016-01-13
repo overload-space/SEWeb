@@ -128,7 +128,7 @@
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
-
+        $('#resourceHeader').addClass("active");
     });
 </script>
 <!--[if lt IE 9]>

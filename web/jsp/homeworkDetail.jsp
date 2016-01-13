@@ -225,10 +225,11 @@
 
 <script type="text/javascript">
     jQuery(document).ready(function() {
+        $('#homeworkHeader').addClass("active");
         $('#submitHomework').click(function() {
             $('#notSubmit').hide();
             $('#uploadHomework').removeClass("hide");
-        })
+        });
 
         Dropzone.options.dropzoneForm = {
             url : "homeworkDetail?homeworkID=<%=homework.getHomeworkID()%>&studentID=<%=studentID%>",

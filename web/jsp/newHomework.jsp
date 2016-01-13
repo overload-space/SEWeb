@@ -159,6 +159,7 @@
 
 <script type="text/javascript">
     jQuery(document).ready(function() {
+        $('#homeworkHeader').addClass("active");
         $('.summernote').summernote( {
             height: 220,                 // set editor height
             minHeight: null,             // set minimum height of editor

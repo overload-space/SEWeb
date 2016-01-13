@@ -148,6 +148,7 @@
 <script type="text/javascript" src="/static/js/plugins/jquery.bootpag.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
+        $('#homeworkHeader').addClass("active");
         $('.pagination').bootpag({
             total: <%=(homeworkList.size() - 1) / numPerPage + 1%>,
             page: <%=currentPage%>,

@@ -146,6 +146,7 @@
 
 <script>
     $(document).ready(function(){
+        $('#messageHeader').addClass("active");
         $('.summernote').summernote({
                 focus: true,
             height: 500,

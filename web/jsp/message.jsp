@@ -141,7 +141,7 @@
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
-
+        $('#messageHeader').addClass("active");
     });
 </script>
 <!--[if lt IE 9]>
