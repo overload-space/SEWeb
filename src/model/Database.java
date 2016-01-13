@@ -43,7 +43,7 @@ public class Database {
              jdbcTemplate.queryForObject(sql, Integer.class);
         }
         catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
             return false;
         }
 

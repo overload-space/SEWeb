@@ -1,17 +1,15 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Cloud
-  Date: 15/12/8
-  Time: 下午5:40
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="model.Message" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="model.Student" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
+<!--[if IE 7]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-    <title>Login | Unify - Responsive Website Template</title>
+    <title>修改资料</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -39,7 +37,7 @@
     <link rel="stylesheet" href="/static/plugins/font-awesome/css/font-awesome.min.css">
 
     <!-- CSS Page Style -->
-    <link rel="stylesheet" href="/static/css/pages/page_log_reg_v1.css">
+    <link rel="stylesheet" href="/static/css/pages/page_clients.css">
     <link rel="stylesheet" href="/static/css/pages/page_misc_sticky_footer.css">
 
     <!-- CSS Customization -->
@@ -52,44 +50,40 @@
     <!--=== Header ===-->
     <%@include file="header.jsp"%>
     <!--=== End Header ===-->
-    <%Integer failed=(Integer) session.getAttribute("failed");
+    <%
+        String studentName = (String)session.getAttribute("studentName");
+        String studentEmail =(String) session.getAttribute("studentEmail");
+        Integer wrongPassword=(Integer) session.getAttribute("wrongPassword");
+
     %>
-
     <span id="warning"></span>
+
     <!--=== Content Part ===-->
-    <div class="container content" id="page">
+    <div class="container content">
         <div class="row">
-            <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-                <form class="reg-page" action="login" method="post" id="loginform">
-                    <div class="reg-header">
-                        <h2>登录课程网站</h2>
-                    </div>
+            <div class="col-md-9">
+                <div class="headline">
+                    <ul class="nav navbar-nav">
+                        <li><button class="btn btn-link" onclick="return func(1);"><h3>修改个人资料</h3></button></li>
+                        <li><button class="btn btn-link" onclick="return func(2);"><h3>修改密码</h3></button></li>
+                    </ul>
+                </div>
+                <div class="form-group">&nbsp;</div>                <div class="form-group">&nbsp;</div>
 
-                    <div class="input-group margin-bottom-20">
-                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input type="text" placeholder="学号" class="form-control" name="id">
-                    </div>
-                    <div></div>
-                    <div class="input-group margin-bottom-20">
-                        <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                        <input type="password" placeholder="密码" class="form-control" name="password">
-                    </div>
-                    <div></div>
-                    <div class="row">
-                        <div class="col-md-6 checkbox">
-                            <label><input type="checkbox"> 下次自动登录</label>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn-u pull-right" type="submit">登录</button>
-                        </div>
-                    </div>
 
-                    <hr>
-
-                    <h4>忘记密码？</h4>
-                    <p>点击<a class="color-green" href="#">这里</a>重置密码</p>
+                <div class="row">
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <form class="reg-page" action="modify" method="post">
+                    <label>学号 <span class="color-red">*</span></label>
+                    <input type="text" class="form-control margin-bottom-20" readonly="readonly" value="<%=studentID%>">
+                    <span id="region"></span>
+                    <div class="col-md-6">
+                        <button class="btn-u pull-right" type="submit">确认修改</button>
+                    </div>
                 </form>
-            </div>
+                </div>
+                    </div>
+            </div><!--/col-md-3-->
         </div><!--/row-->
     </div><!--/container-->
     <!--=== End Content Part ===-->
@@ -110,24 +104,9 @@
 <script type="text/javascript" src="/static/js/custom.js"></script>
 <!-- JS Page Level -->
 <script type="text/javascript" src="/static/js/app.js"></script>
-<script type="text/javascript" src="/static/INSPINIA/js/plugins/validate/jquery.validate.min.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
-        $('#loginform').validate({
-            rules: {
-                id: {
-                    required: true,
-                    minlength: 1
-                },
-                password: {
-                    required: true
-                }
-            },
-            errorPlacement: function(error, element) {
-                error.appendTo(element.parent().next());
-            }
-        });
     });
 </script>
 <!--[if lt IE 9]>
@@ -135,7 +114,34 @@
 <script src="/static/plugins/html5shiv.js"></script>
 <script src="/static/plugins/placeholder-IE-fixes.js"></script>
 <![endif]-->
+
 <script>
+    function func(type) {
+        if (type == 1) {
+            document.getElementById("region").innerHTML = "  \
+            <input type=\"hidden\" name=\"type\" value=\"information\"> \
+         <label>姓名 <span class=\"color-red\">*</span></label>\
+                <input type=\"text\" class=\"form-control margin-bottom-20\" name=\"name\" value=\"<%=studentName%>\">\
+                <label>邮箱 <span class=\"color-red\">*</span></label>\
+                <input type=\"email\" class=\"form-control margin-bottom-20\" name=\"email\" value=\"<%=studentEmail%>\">\
+                <div class=\"row\">\
+                <div class=\"col-sm-6\">\
+                <label>密码 <span class=\"color-red\">*</span></label>\
+                <input type=\"password\" class=\"form-control margin-bottom-20\" name=\"password\">\
+                </div>\
+                </div>";
+        }
+        else {
+            document.getElementById("region").innerHTML = " \
+                <input type=\"hidden\" class=\"margin-bottom-20\" name=\"type\" value=\"password\"> \
+                <label>旧密码 <span class=\"color-red\">*</span></label>\
+                <input type=\"password\" class=\"form-control margin-bottom-20\" name=\"old_password\">\
+                <label>新密码 <span class=\"color-red\">*</span></label>\
+                <input type=\"password\" class=\"form-control margin-bottom-20\" name=\"password\">\
+                <label>重复新密码 <span class=\"color-red\">*</span></label>\
+                <input type=\"password\" class=\"form-control margin-bottom-20\" name=\"passwordCheck\">";
+        }
+    }
     function update(value) {
         if(1 == value) {
             document.getElementById("warning").innerHTML="<div id=\"myAlert\" class=\"alert alert-warning\">\
@@ -147,7 +153,8 @@
             document.getElementById("warning").innerHTML="";
         }
     }
-    update(<%=failed%>);
+    update(<%=wrongPassword%>);
+ func(1);
 </script>
 </body>
-</html> 
+</html>

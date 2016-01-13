@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="JAVA_MODULE" version="4">
+  <component name="EclipseModuleManager">
+    <varelement var="file://$TOMCAT_HOME$/lib/common/servlet.jar" value="TOMCAT_HOME/lib/common/servlet.jar" />
+    <varelement var="file://$TOMCAT_HOME$/lib/common/jasper-runtime.jar" value="TOMCAT_HOME/lib/common/jasper-runtime.jar" />
+    <src_description expected_position="1">
+      <src_folder value="file://$MODULE_DIR$/src" expected_position="1" />
+    </src_description>
+  </component>
   <component name="FacetManager">
     <facet type="web" name="Web">
       <configuration>

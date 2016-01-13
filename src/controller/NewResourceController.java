@@ -22,6 +22,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -60,22 +61,18 @@ public class NewResourceController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody
-    String upload(MultipartHttpServletRequest request,
-                          HttpServletResponse response) throws IOException {
+    public String upload(MultipartHttpServletRequest request) throws IOException {
 
-        Map<String, MultipartFile> fileMap = request.getFileMap();
+        List<MultipartFile> files = request.getFiles("file");
+
         String description=request.getParameter("desp");
         String type = request.getParameter("type");
         String id =request.getParameter("id");
 
         boolean isModify = type.equals("modify");
 
-        List<Resource> uploadedFiles = new ArrayList<Resource>();
-
-        for (MultipartFile multipartFile : fileMap.values()) {
+        for(MultipartFile multipartFile:files) {
             saveFileToLocalDisk(multipartFile);                         // file store in disk
-
             Resource fileInfo = getUploadedFileInfo(multipartFile);         // new file's information
             fileInfo.setDescription(description);
 
@@ -89,7 +86,6 @@ public class NewResourceController {
 
             }
 
-            uploadedFiles.add(fileInfo);
         }
 
         return "redirect:resource";
@@ -121,21 +117,7 @@ public class NewResourceController {
     }
 
     private String getDestinationLocation() {
-        String s = getClass().getName();
-        int i = s.lastIndexOf(".");
-        if(i > -1) s = s.substring(i + 1);
-        s = s + ".class";
 
-        String testPath = this.getClass().getResource(s).toString();
-
-        for(int k=0;k<7;k++) {
-            i=testPath.lastIndexOf("/");
-            testPath=testPath.substring(0,i);
-        }
-        testPath+="/Resource/";
-        testPath=testPath.substring(6);
-
-        //testPath = "/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/Resource/";
-        return testPath;
+        return "D:/Resources/";
     }
 }

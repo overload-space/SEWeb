@@ -19,25 +19,25 @@ public class LoginController {
     @RequestMapping(method = RequestMethod.GET)
     public String get(HttpSession session) {
         System.out.println("get");
-        //session.setAttribute("studentID","登录");
         session.setAttribute("failed",0);
         return "login";
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public String post(HttpSession session, Student student) {
-        String sql = "select ID from Student where ID=" + student.getId()+" and checked=1 and Password=\""+student.getPassword()+"\"";
-      //  System.out.println(sql);
+        String sql = "select ID from SEWeb.Student where ID=" + student.getId()+" and checked=1 and Password=\""+student.getPassword()+"\"";
+        //System.out.println(sql);
         boolean ret = database.exists(sql);
         if(ret) {
             session.setAttribute("failed",0);
+
             session.setAttribute("studentID", new Integer(student.getId()).toString());
             student = StudentDAO.getStudent(database, student.getId());
             session.setAttribute("isAdmin", student.isAdmin());
-            return "redirect:/";
+            return "redirect:index";
+
         }
         else {
-            //session.setAttribute("studentID","登录");
             session.setAttribute("failed",1);
             return "login";
         }

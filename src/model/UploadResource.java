@@ -14,7 +14,6 @@ public class UploadResource {
             FileNotFoundException {
 
         String outputFileName = getDestinationLocation() + homework.getTitle() + "/" + multipartFile.getOriginalFilename();
-
         FileCopyUtils.copy(multipartFile.getBytes(), new FileOutputStream(outputFileName));
     }
 
@@ -27,7 +26,7 @@ public class UploadResource {
 
     public static String getDestinationLocation() {
         //String testPath = "/Users/Cloud/Code/njuLessons/softwareEngineering/SEWeb/Resource/";
-        String testPath = "D:\\Homework\\";
+        String testPath = "D:/Homework/";
         return testPath;
     }
 
