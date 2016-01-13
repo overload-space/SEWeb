@@ -34,7 +34,7 @@ public class LoginController {
             session.setAttribute("studentID", new Integer(student.getId()).toString());
             student = StudentDAO.getStudent(database, student.getId());
             session.setAttribute("isAdmin", student.isAdmin());
-            return "redirect:index";
+            return "redirect:/";
 
         }
         else {
