@@ -69,6 +69,7 @@
         </div>
         <!-- End Topbar -->
 
+        <h1>&nbsp;&nbsp;&nbsp;&nbsp;软件工程课程网站</h1>
         <!-- Toggle get grouped for better mobile display -->
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
             <span class="sr-only">Toggle navigation</span>
