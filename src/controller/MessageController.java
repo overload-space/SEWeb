@@ -33,6 +33,7 @@ public class MessageController {
         session.setAttribute("itemPerPage",5);
         session.setAttribute("begin_num","1");
 
+
         String idStr = (String)session.getAttribute("studentID");
         if (idStr != null) {
             int id = Integer.parseInt(idStr);
@@ -41,6 +42,7 @@ public class MessageController {
         } else {
             session.setAttribute("isAdmin", false);
         }
+
 
         return "message";
     }

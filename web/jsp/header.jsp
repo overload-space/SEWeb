@@ -31,7 +31,9 @@
                                     "<li class=\"hoverSelector\">\n" +
                                             "<a>"+ studentID +"</a>\n" +
                                             "<ul class=\"languages hoverSelectorBlock\">\n" +
-                                            "<li><a href=\"#\">修改个人信息</a></li>\n" +
+
+                                            "<li><a href=\"modify\">修改个人信息</a></li>\n" +
+
                                             "<li><a href=\"/studentManager\">学生管理</a></li>\n" +
                                             "</ul>\n" +
                                             "</li>\n" +
@@ -43,7 +45,8 @@
                                     "<li class=\"hoverSelector\">\n" +
                                             "<a>"+ studentID +"</a>\n" +
                                             "<ul class=\"languages hoverSelectorBlock\">\n" +
-                                            "<li><a href=\"#\">修改个人信息</a></li>\n" +
+                                            "<li><a href=\"modify\">修改个人信息</a></li>\n" +
+
                                             "</ul>\n" +
                                             "</li>\n" +
                                             "<li class=\"topbar-devider\"></li>\n" +
@@ -70,7 +73,9 @@
         <div class="container">
             <ul class="nav navbar-nav">
                 <!-- Home -->
-                <li id="indexHeader"><a href="/">主页</a></li>
+
+                <li id="indexHeader"><a href="/index">主页</a></li>
+
                 <!-- End Home -->
 
                 <!-- Home -->

@@ -4,6 +4,13 @@ import model.Database;
 import model.Student;
 import model.StudentMapper;
 
+
+/**
+ * Created by user on 2016/1/12.
+ */
+
+import javax.xml.crypto.Data;
+import java.util.Iterator;
 import java.util.List;
 
 public class StudentDAO {
@@ -24,9 +31,10 @@ public class StudentDAO {
 
     public static Student getStudent(Database database,int id){
         String sql="select * from Student where ID= ?";
-        Student student = (Student)database.get(sql,new Object[]{id},new StudentMapper());
+        Student student = (Student) database.get(sql,new Object[]{id},new StudentMapper());
         return student;
     }
+
 
     public static List<Student> getStudentList(Database database){
         String sql = "select * from Student where checked = 1 and Level = 0 order by ID";
@@ -45,4 +53,11 @@ public class StudentDAO {
         List <Student> StudentList = database.getList(sql,new StudentMapper());
         return StudentList;
     }
+    public static  List<Student> getTeacherAndTAList(Database database) {
+        String sql = "select * from Student where Level = 1 or Level=100 order by ID";
+        List <Student> StudentList = database.getList(sql,new StudentMapper());
+        System.out.println(sql);
+        return StudentList;
+    }
+
 }

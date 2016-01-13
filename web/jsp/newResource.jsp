@@ -89,27 +89,20 @@
                                     <h3>上传文件</h3>
                                 </div>
                                 <div class="ibox-content" style="display: block;">
-                                    <form id="dropzone-form" class="dropzone"
-                                          enctype="multipart/form-data">
+                                    <form action="newResource" method="post" enctype="multipart/form-data">
                                         <div class="input-group margin-bottom-20">
-                                            <input type="text" class="form-control" placeholder="资料描述"  name="desp" id="desp">
+                                            <input type="text" size="20" class="form-control" placeholder="资料描述"  name="desp" id="desp">
                                             <input type="hidden" name="type" id="type" value="<%=type%>">
                                             <input type="hidden" name="id" id="id" value="<%=id%>">
                                         </div>
-                                        <div class="dz-default dz-message file-dropzone text-center well col-sm-12">
 
-                                            <span class="glyphicon glyphicon-paperclip"></span> <span>
-								To attach files, drag and drop here</span><br> <span>OR</span><br>
-                                            <span>Just Click</span>
-                                        </div>
-
-                                        <!-- this is were the previews should be shown. -->
-                                        <div class="dropzone-previews"></div>
+                                        <input type="file" multiple name="file" />
+                                        </br></br></br>
+                                        <button class="btn btn-u" type="submit">提交</button>
                                     </form>
+
                                     <hr>
-                                    <button id="upload-button" class="btn btn-u">
-                                        <span class="glyphicon glyphicon-upload"></span> 上传
-                                    </button>
+
                                 </div>
                             </div>
                         </div>
@@ -147,47 +140,34 @@
         $('#resourceHeader').addClass("active");
         f(<%=id%>,"<%=description%>");
 
-        $(".file-dropzone").on('dragover', handleDragEnter);
-        $(".file-dropzone").on('dragleave', handleDragLeave);
-        $(".file-dropzone").on('drop', handleDragLeave);
 
-        function handleDragEnter(e) {
 
-            this.classList.add('drag-over');
-        }
-
-        function handleDragLeave(e) {
-
-            this.classList.remove('drag-over');
-        }
-
-        // "dropzoneForm" is the camel-case version of the form id "dropzone-form"
-        Dropzone.options.dropzoneForm = {
+     /*   Dropzone.options.dropzoneForm = {
             url : "newResource",
-            type:"post",
+            type: "post",
             autoProcessQueue : false,
             uploadMultiple : true,
-            maxFilesize : 256, // MB
+
             parallelUploads : 100,
             maxFiles : 100,
             addRemoveLinks : true,
             previewsContainer : ".dropzone-previews",
-            // The setting up of the dropzone
+
             init : function() {
                 var myDropzone = this;
-                // first set autoProcessQueue = false
+
                 $('#upload-button').on("click", function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
+                   // e.preventDefault();
+                   // e.stopPropagation();
 
                     if (myDropzone.getQueuedFiles().length > 0) {
                         myDropzone.processQueue();
+                        alert( myDropzone.getUploadingFiles().length);
                     } else {
                         myDropzone.uploadFiles([]); //send empty
                     }
 
                 });
-
 
                 // customizing the default progress bar
                 this.on("uploadprogress", function(file, progress) {
@@ -198,13 +178,12 @@
 
                 // displaying the uploaded files information in a Bootstrap dialog
                 this.on("successmultiple", function(files, serverResponse) {
-                  //  showInformationDialog(files, serverResponse);
+                   // showInformationDialog(files, serverResponse);
                 });
-                this.on("success", function() {
-                    myDropzone.options.autoProcessQueue = true;
-                });
+
             }
-        }
+        }*/
+
     });
 
 </script>
