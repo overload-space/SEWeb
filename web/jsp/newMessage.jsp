@@ -124,7 +124,7 @@
 </div><!--/wrapper-->
 
 <!-- JS Global Compulsory -->
-<!--
+
 <script type="text/javascript" src="/static/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="/static/plugins/jquery/jquery-migrate.min.js"></script>
 <script type="text/javascript" src="/static/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -132,9 +132,9 @@
 <script type="text/javascript" src="/static/plugins/smoothScroll.js"></script>
 <script type="text/javascript" src="/static/js/custom.js"></script>
 <script type="text/javascript" src="/static/js/app.js"></script>
-<script type="text/javascript" src="/static/js/editor.js"></script>
--->
+<script type="text/javascript" src="/static/INSPINIA/js/plugins/summernote/summernote.min.js"></script>
 
+<!--
 <script type="text/javascript" src="/static/INSPINIA/js/plugins/pace/pace.min.js"></script>
 <script type="text/javascript"  src="/static/INSPINIA/js/inspinia.js"></script>
 <script type="text/javascript" src="/static/INSPINIA/js/jquery-2.1.1.js"></script>
@@ -142,7 +142,7 @@
 <script type="text/javascript"  src="/static/INSPINIA/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script  type="text/javascript" src="/static/INSPINIA/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script type="text/javascript" src="/static/INSPINIA/js/plugins/summernote/summernote.min.js"></script>
-
+-->
 
 <script>
     $(document).ready(function(){
