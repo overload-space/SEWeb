@@ -1,6 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-
 <div class="header">
     <div class="container">
         <!-- Logo -->
@@ -10,39 +8,54 @@
         <!-- End Logo -->
 
         <!-- Topbar -->
-        <%String studentID=(String)session.getAttribute("studentID");
-            String show_content=studentID;
-            String show_right = "注册";
-            String url_left = "/login";
-            String url_right = "/register";
-            if(studentID==null) {
-                show_content="登录";
-            }
-            else {//if(!studentID.equals("登录")) {
-                show_content=studentID;
-                show_right = "退出";
-                url_left = "#";
-                url_right = "/logout";
-            }
+        <%
+            String studentID=(String)session.getAttribute("studentID");
+            boolean isAdmin = false;
         %>
         <div class="topbar">
             <ul class="loginbar pull-right">
-                <li><a href="<%=url_left%>"><%=show_content%></a></li>
-                <li class="topbar-devider"></li>
-                <li><a href="login"><%=show_content%></a></li>
-                <li class="topbar-devider"></li>
-                <li><a href="register">注册</a></li>
-                <li class="topbar-devider"></li>
-                <li><a href="modify">修改</a></li>
-
-                <li><a href="<%=url_right%>"><%=show_right%></a></li>
-
+                <%
+                    if (studentID == null) {
+                        out.print(
+                                "<li>\n" +
+                                        "<a href=\"/login\">登录</a>\n" +
+                                        "</li>\n" +
+                                        "<li class=\"topbar-devider\"></li>\n" +
+                                        "<li><a href=\"/register\">注册</a></li>"
+                        );
+                    } else {
+                        isAdmin = (boolean) session.getAttribute("isAdmin");
+                        if (isAdmin) {
+                            out.print(
+                                    "<li class=\"hoverSelector\">\n" +
+                                            "<a>"+ studentID +"</a>\n" +
+                                            "<ul class=\"languages hoverSelectorBlock\">\n" +
+                                            "<li><a href=\"modify\">修改个人信息</a></li>\n" +
+                                            "<li><a href=\"/studentManager\">学生管理</a></li>\n" +
+                                            "</ul>\n" +
+                                            "</li>\n" +
+                                            "<li class=\"topbar-devider\"></li>\n" +
+                                            "<li><a href=\"/logout\">退出</a></li>"
+                            );
+                        } else {
+                            out.print(
+                                    "<li class=\"hoverSelector\">\n" +
+                                            "<a>"+ studentID +"</a>\n" +
+                                            "<ul class=\"languages hoverSelectorBlock\">\n" +
+                                            "<li><a href=\"modify\">修改个人信息</a></li>\n" +
+                                            "</ul>\n" +
+                                            "</li>\n" +
+                                            "<li class=\"topbar-devider\"></li>\n" +
+                                            "<li><a href=\"/logout\">退出</a></li>"
+                            );
+                        }
+                    }
+                %>
             </ul>
         </div>
-
-
         <!-- End Topbar -->
 
+        <h1>&nbsp;&nbsp;&nbsp;&nbsp;软件工程课程网站</h1>
         <!-- Toggle get grouped for better mobile display -->
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -56,16 +69,16 @@
         <div class="container">
             <ul class="nav navbar-nav">
                 <!-- Home -->
-                <li><a href="index">主页</a></li>
+                <li id="indexHeader"><a href="/index">主页</a></li>
                 <!-- End Home -->
 
                 <!-- Home -->
-                <li><a href="/message">通知</a></li>
+                <li id="messageHeader"><a href="/message">通知</a></li>
                 <!-- End Home -->
 
-                <li><a href="/resource">资料</a></li>
+                <li id="resourceHeader"><a href="/resource">资料</a></li>
                 <!-- Home -->
-                <li class="active"><a href="/homework">作业</a></li>
+                <li id="homeworkHeader"><a href="/homework">作业</a></li>
                 <!-- End Home -->
 
                 <!-- Search Block -->

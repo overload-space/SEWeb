@@ -98,10 +98,7 @@
                 <form class="reg-page" action="index" method="post">
                 <div class="who margin-bottom-30">
                     <div class="headline"><h2>课程介绍</h2></div>
-                    <%
-                        boolean isAdmin = (Boolean)session.getAttribute("isAdmin");
-                        System.out.println(isAdmin);
-                    %>
+
                     <textarea class="form-control" rows="7" id="text1" name="textarea"></textarea>
                 </div>
                 </form>

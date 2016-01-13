@@ -24,8 +24,8 @@ public class LoginController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String post(HttpSession session, Student student) {
-        String sql = "select ID from Student where ID=" + student.getId()+" and checked=1 and Password=\""+student.getPassword()+"\"";
-      //  System.out.println(sql);
+        String sql = "select ID from SEWeb.Student where ID=" + student.getId()+" and checked=1 and Password=\""+student.getPassword()+"\"";
+        //System.out.println(sql);
         boolean ret = database.exists(sql);
         if(ret) {
             session.setAttribute("failed",0);

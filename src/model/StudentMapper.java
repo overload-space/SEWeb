@@ -14,7 +14,7 @@ public class StudentMapper implements RowMapper<Student>{
         student.setName(rs.getString("Name"));
         student.setEmail(rs.getString("Email"));
         student.setPassword(rs.getString("Password"));
-        student.setChecked(rs.getInt("checked"));
+        student.setChecked(rs.getBoolean("checked"));
         student.setMd5token(rs.getString("md5token"));
         return student;
     }
