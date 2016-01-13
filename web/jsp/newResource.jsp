@@ -137,6 +137,7 @@
 
 <script>
     $(document).ready(function(){
+        $('#resourceHeader').addClass("active");
         f(<%=id%>,"<%=description%>");
 
 

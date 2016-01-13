@@ -1,21 +1,20 @@
 package model;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 
-/**
- * Created by Administrator on 2016/1/3.
- */
-public class StudentMapper implements RowMapper<Student>{
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class StudentMapper implements RowMapper<Student> {
     public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Student student=new Student();
-        student.setId(String.valueOf(rs.getInt("ID")));
+        Student student = new Student();
+        student.setId(rs.getInt("ID"));
         student.setName(rs.getString("Name"));
-        student.setEmail(rs.getString("Email"));
         student.setPassword(rs.getString("Password"));
-        student.setChecked(rs.getBoolean("checked"));
+        student.setEmail(rs.getString("Email"));
         student.setMd5token(rs.getString("md5token"));
+        student.setChecked(rs.getBoolean("checked"));
+        student.setLevel(rs.getInt("Level"));
         return student;
     }
 }

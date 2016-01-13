@@ -1,6 +1,7 @@
 package controller;
 
 import Common.ResourceDAO;
+import Common.StudentDAO;
 import model.Database;
 import model.Message;
 import model.Resource;
@@ -42,9 +43,14 @@ public class ResourceController {
         session.setAttribute("resourcePerPage",10);
         session.setAttribute("resourceBeginNum","1");
 
-        String id=(String)session.getAttribute("studentID");
-        System.out.println(id);
-        session.setAttribute("isAdmin", Student.isAdmin(id));
+        String idStr = (String)session.getAttribute("studentID");
+        if (idStr != null) {
+            int id = Integer.parseInt(idStr);
+            Student student = StudentDAO.getStudent(database, id);
+            session.setAttribute("isAdmin", student.isAdmin());
+        } else {
+            session.setAttribute("isAdmin", false);
+        }
         return "resource";
     }
 

@@ -28,9 +28,7 @@
 
 ## 数据库配置
 
-+ 数据库配置项在web/WEB-INF/SEWeb-servlet.xml中, 你需要修改用户名和密码为你本地mysql的用户名和密码, 并在本地建立SEWeb数据库
-+ 连接数据库的简单例子写在了RegisterController里的post方法里, 用于用户注册
-+ 要测试注册功能需要在数据库中添加Student表:
++ 测试应该至少建3个账号，对应学生，助教和老师。注意要在student表里把checked这列的值改为1才能登录。在student表里, Level这一列的值,学生为0, 助教为1, 老师为100
 
 ```sql
 CREATE TABLE `SEWeb`.`Student` (
@@ -40,8 +38,9 @@ CREATE TABLE `SEWeb`.`Student` (
   `Password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ID`));
   # 以下为更新内容，添加 checked标识和md5token值
- alter table  `SEWeb`.`Student` add `checked` int NOT NULL;
+ alter table  `SEWeb`.`Student` add `checked` bit(1) NOT NULL;
  alter table  `SEWeb`.`Student` add `md5token` VARCHAR(45);
+ alter table  `SEWeb`.`Student` add `Level` int NOT NULL;
 ```
 
 下面是更新的数据库结构（来自王雨阳同学）：

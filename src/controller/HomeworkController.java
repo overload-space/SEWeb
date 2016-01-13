@@ -2,6 +2,7 @@ package controller;
 
 import Common.HomeworkDAO;
 import Common.ResourceDAO;
+import Common.StudentDAO;
 import model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -37,8 +38,14 @@ public class HomeworkController {
         List<Homework> homeworkList = HomeworkDAO.getHomeworkList(database);
         session.setAttribute("homeworkList", homeworkList);
         session.setAttribute("page", page);
-        String id=(String)session.getAttribute("studentID");
-        session.setAttribute("isAdmin", Student.isAdmin(id));
+        String idStr = (String)session.getAttribute("studentID");
+        if (idStr != null) {
+            int id = Integer.parseInt(idStr);
+            Student student = StudentDAO.getStudent(database, id);
+            session.setAttribute("isAdmin", student.isAdmin());
+        } else {
+            session.setAttribute("isAdmin", false);
+        }
         return "homework";
     }
 

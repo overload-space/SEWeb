@@ -133,21 +133,13 @@
         }
         else {
             document.getElementById("region").innerHTML = " \
-                <input type=\"hidden\" name=\"type\" value=\"password\"> \
-                <div class=\"row\">\
-                <div class=\"col-sm-6\">\
+                <input type=\"hidden\" class=\"margin-bottom-20\" name=\"type\" value=\"password\"> \
                 <label>旧密码 <span class=\"color-red\">*</span></label>\
                 <input type=\"password\" class=\"form-control margin-bottom-20\" name=\"old_password\">\
-                </div>\
-                <div class=\"col-sm-6\">\
                 <label>新密码 <span class=\"color-red\">*</span></label>\
                 <input type=\"password\" class=\"form-control margin-bottom-20\" name=\"password\">\
-                </div>\
-                <div class=\"col-sm-6\">\
                 <label>重复新密码 <span class=\"color-red\">*</span></label>\
-                <input type=\"password\" class=\"form-control margin-bottom-20\" name=\"passwordCheck\">\
-                </div>\
-                </div>";
+                <input type=\"password\" class=\"form-control margin-bottom-20\" name=\"passwordCheck\">";
         }
     }
     function update(value) {

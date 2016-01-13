@@ -54,22 +54,22 @@
 </head>
 
 <body>
-<%
-    List<Homework> homeworkList = (List<Homework>) session.getAttribute("homeworkList");
-    boolean isAdmin = (boolean) session.getAttribute("isAdmin");
-    String hide = "hide";
-    if (isAdmin) {
-        hide = "";
-    }
-    int currentPage = (int) session.getAttribute("page");
-    int numPerPage = 5;
-    int beginIndex = (currentPage - 1) * numPerPage;
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-%>
 <div class="wrapper">
     <!--=== Header ===-->
     <%@include file="header.jsp"%>
     <!--=== End Header ===-->
+
+    <%
+        List<Homework> homeworkList = (List<Homework>) session.getAttribute("homeworkList");
+        String hide = "hide";
+        if (isAdmin) {
+            hide = "";
+        }
+        int currentPage = (int) session.getAttribute("page");
+        int numPerPage = 5;
+        int beginIndex = (currentPage - 1) * numPerPage;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+    %>
 
     <!--=== Content Part ===-->
     <div class="container content">
@@ -109,8 +109,8 @@
                             <li><i class="icon iconfont">&#xe60c;</i> <b>截止日期 : <%=simpleDateFormat.format(deadline)%></b></li>
                         </ul>
                         <p><%=homeworkList.get(i).getContent()%></p>
-                        <a class="btn btn-success btn-xs <%=hide%>" type="button" href="/homework/newHomework?type=modify&homeworkID=<%=homeworkList.get(i).getHomeworkID()%>">修改</a>
-                        <a class="btn btn-danger btn-xs <%=hide%>" type="button" href="/homework/newHomework?type=delete&homeworkID=<%=homeworkList.get(i).getHomeworkID()%>">删除</a>
+                        <a class="btn btn-success btn-sm <%=hide%>" type="button" href="/homework/newHomework?type=modify&homeworkID=<%=homeworkList.get(i).getHomeworkID()%>">修改</a>
+                        <a class="btn btn-danger btn-sm <%=hide%>" type="button" href="/homework/newHomework?type=delete&homeworkID=<%=homeworkList.get(i).getHomeworkID()%>">删除</a>
                     </div>
                 </div>
                 <!-- End Clients Block-->
@@ -148,6 +148,7 @@
 <script type="text/javascript" src="/static/js/plugins/jquery.bootpag.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
+        $('#homeworkHeader').addClass("active");
         $('.pagination').bootpag({
             total: <%=(homeworkList.size() - 1) / numPerPage + 1%>,
             page: <%=currentPage%>,

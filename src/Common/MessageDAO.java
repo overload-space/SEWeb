@@ -8,7 +8,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/1/3.
+ * Created by Administrator on 2016/1/3
  */
 public class MessageDAO {
     public static void sendMessage(Database database, Message message){

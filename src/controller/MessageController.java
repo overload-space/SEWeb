@@ -1,6 +1,7 @@
 package controller;
 
 import Common.MessageDAO;
+import Common.StudentDAO;
 import model.Database;
 import model.Message;
 import model.Student;
@@ -32,8 +33,16 @@ public class MessageController {
         session.setAttribute("itemPerPage",5);
         session.setAttribute("begin_num","1");
 
-        String id=(String)session.getAttribute("studentID");
-        session.setAttribute("isAdmin", Student.isAdmin(id));
+
+        String idStr = (String)session.getAttribute("studentID");
+        if (idStr != null) {
+            int id = Integer.parseInt(idStr);
+            Student student = StudentDAO.getStudent(db, id);
+            session.setAttribute("isAdmin", student.isAdmin());
+        } else {
+            session.setAttribute("isAdmin", false);
+        }
+
 
         return "message";
     }

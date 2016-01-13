@@ -35,7 +35,7 @@ public class IndexController {
         List<Student> admins = null;
 
         messages = MessageDAO.getMessageList(database);
-        admins= StudentDAO.getAdminList(database);
+        admins= StudentDAO.getTeacherAndTAList(database);
 
         session.setAttribute("messageIndex",messages);
         session.setAttribute("admins",admins);

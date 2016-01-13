@@ -55,33 +55,33 @@
 </head>
 
 <body>
-
-<%
-    String type = (String) session.getAttribute("type");
-    Homework homework = (Homework) session.getAttribute("homework");
-    Timestamp deadline = new Timestamp(new Date().getTime());
-    Timestamp delayDeadline1 = new Timestamp(new Date().getTime());
-    Timestamp delayDeadline2 = new Timestamp(new Date().getTime());
-    String title = "";
-    String content = "";
-    String head = "发布新作业";
-    String homeworkID = "";
-    if (type.equals("modify")) {
-        deadline = homework.getDeadline();
-        delayDeadline1 = homework.getDelayDeadLine1();
-        delayDeadline2 = homework.getDelayDeadLine2();
-        title = homework.getTitle();
-        content = homework.getContent();
-        head = "修改作业";
-        homeworkID = "?homeworkID=" + homework.getHomeworkID();
-    }
-
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-%>
 <div class="wrapper">
     <!--=== Header ===-->
     <%@include file="header.jsp"%>
     <!--=== End Header ===-->
+
+    <%
+        String type = (String) session.getAttribute("type");
+        Homework homework = (Homework) session.getAttribute("homework");
+        Timestamp deadline = new Timestamp(new Date().getTime());
+        Timestamp delayDeadline1 = new Timestamp(new Date().getTime());
+        Timestamp delayDeadline2 = new Timestamp(new Date().getTime());
+        String title = "";
+        String content = "";
+        String head = "发布新作业";
+        String homeworkID = "";
+        if (type.equals("modify")) {
+            deadline = homework.getDeadline();
+            delayDeadline1 = homework.getDelayDeadLine1();
+            delayDeadline2 = homework.getDelayDeadLine2();
+            title = homework.getTitle();
+            content = homework.getContent();
+            head = "修改作业";
+            homeworkID = "?homeworkID=" + homework.getHomeworkID();
+        }
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+    %>
 
     <!--=== Content Part ===-->
     <div class="container content">
@@ -159,6 +159,7 @@
 
 <script type="text/javascript">
     jQuery(document).ready(function() {
+        $('#homeworkHeader').addClass("active");
         $('.summernote').summernote( {
             height: 220,                 // set editor height
             minHeight: null,             // set minimum height of editor

@@ -61,7 +61,6 @@
             <div class="col-md-9">
                 <div class="headline"><h2>资料</h2></div>
                 <%
-
                     if(isAdmin) {
                         out.print("<div class=\"col-md-offset-1\"><button offset=5px class=\"btn-u\" type=\"button\" onclick=\"return myclick()\">上传资料</button>");
                         out.print("</div>");
@@ -129,7 +128,7 @@
 <script type="text/javascript">
     jQuery(document).ready(function() {
         App.init();
-
+        $('#resourceHeader').addClass("active");
     });
 </script>
 <!--[if lt IE 9]>

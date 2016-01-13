@@ -1,5 +1,6 @@
 package controller;
 
+import Common.StudentDAO;
 import model.Database;
 import model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,9 @@ public class RegisterController {
             e.printStackTrace();
         }
         student.setMd5token(token);
-        String SQL = "insert into Student (ID, Name, Email, Password, checked, md5token) values ('" + student.getId() + "', '" + student.getName() + "', '" + student.getEmail() + "', '" + student.getPassword() + "', " + student.isChecked() + ", '" + student.getMd5token() + "')";
-        database.insert(SQL);
-        new SendEmail("xxx@xxx.com","http://localhost:8080/verify_token="+token);
+        student.setLevel(0);
+        StudentDAO.newStudent(database, student);
+        //new SendEmail("xxx@xxx.com","http://localhost:8080/verify_token="+token);
         return "index";
     }
 }

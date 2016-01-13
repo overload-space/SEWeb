@@ -1,5 +1,6 @@
 package controller;
 
+import Common.StudentDAO;
 import model.Database;
 import model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +30,10 @@ public class LoginController {
         boolean ret = database.exists(sql);
         if(ret) {
             session.setAttribute("failed",0);
-            session.setAttribute("studentID",student.getId());
 
-            String id=(String)session.getAttribute("studentID");
-            session.setAttribute("isAdmin", Student.isAdmin(id));
+            session.setAttribute("studentID", new Integer(student.getId()).toString());
+            student = StudentDAO.getStudent(database, student.getId());
+            session.setAttribute("isAdmin", student.isAdmin());
             return "redirect:index";
 
         }
