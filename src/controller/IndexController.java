@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Scanner;
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping("/")
 public class IndexController {
     @Autowired
     private Database database;

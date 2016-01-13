@@ -74,7 +74,7 @@
             <ul class="nav navbar-nav">
                 <!-- Home -->
 
-                <li id="indexHeader"><a href="/index">主页</a></li>
+                <li id="indexHeader"><a href="/">主页</a></li>
 
                 <!-- End Home -->
 
